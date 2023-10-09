@@ -9,13 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack{
+            Image("background")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+            VStack{
+                Image("diceeLogo")
+                Spacer()
+                HStack {
+                    DiceView(n: 1)
+                    DiceView(n: 1)
+                }
+                .padding(.horizontal)
+                Spacer()
+                Button(action: {
+                    
+                }) {
+                    Text("Roll")
+                        .font(.system(size: 50))
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                }
+                .background(Color.red)
+            }
         }
-        .padding()
+    }
+}
+
+struct DiceView: View {
+    
+    let n: Int
+    
+    var body: some View {
+        Image("dice\(n)")
+            .resizable()
+            .aspectRatio(1, contentMode: .fit)
+            .padding()
     }
 }
 
